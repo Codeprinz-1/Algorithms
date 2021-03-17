@@ -4,6 +4,7 @@
 // for example, [1,2,3] and [4,1,9] should return true
 // [1,2,3] and [1,9] should return false and 
 // [1,2,1] and [4,4,1] should return false (must be same frequency)
+// we're assuming only two arrays containing numbers only are passed
 
 const isSquareOf = (firstArray, secondArray) => {
   // first check if both arrays are the same length
@@ -35,4 +36,38 @@ const isSquareOf = (firstArray, secondArray) => {
   };
 
   return true
+};
+
+// this function is very efficient in time complexity 
+// although there is a shorter way of writing this
+// but the emphasis here is on time complexity, 
+// the first solution that might come to mind depending on who you are,
+// might be a nested loop and its actually shorter but it has a time complexity of O(n ^ d)
+// where d is the level of dept of the nested loops, that algorith would be an expensive one
+// but by using frequency counters we have a more efficient time complexity of O(n)
+
+
+// here is another function based on the same frequency pattern
+
+const validAnagram = (firstString, secondString) => {
+  if(firstString.length !== secondString.length) return false;
+
+  let stringFrequency1 = {};
+  let stringFrequency2 = {};
+
+  for(let str of firstString) {
+    stringFrequency1[str] = stringFrequency1[str]++ || 1;
+  };
+
+  for(let str of secondString) {
+    stringFrequency2[str] = stringFrequency2[str]++ || 1;
+  };
+
+  for(let key in stringFrequency1) {
+    if(!(stringFrequency2[key])) return false;
+    
+    if(!(stringFrequency1[key] == stringFrequency2[key])) return false;
+  };
+
+  return true;
 };
