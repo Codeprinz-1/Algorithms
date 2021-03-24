@@ -18,10 +18,10 @@ const isSquareOf = (firstArray, secondArray) => {
   // then count the frequency of the numbers in the arrays 
   // and update their corresponding frequency counters (the objets above)
   for(let val of firstArray) {
-    frequencyCounter1[val] = frequencyCounter1[val]++ || 1;
+    frequencyCounter1[val] = ++frequencyCounter1[val] || 1;
   };
   for(let val of secondArray) {
-    frequencyCounter2[val] = frequencyCounter2[val]++ || 1;
+    frequencyCounter2[val] = ++frequencyCounter2[val] || 1;
   };
 
   // check if the square of the keys in fthe first array exists as keys in the second array
@@ -38,12 +38,15 @@ const isSquareOf = (firstArray, secondArray) => {
   return true
 };
 
+console.log(isSquareOf([1,2,3,4,5], [4,9,16,25,1]),
+isSquareOf([1,2,3,4,5], [4,9,16,20,1]));
+
 // this function is very efficient in time complexity 
 // although there is a shorter way of writing this
 // but the emphasis here is on time complexity, 
 // the first solution that might come to mind depending on who you are,
 // might be a nested loop and its actually shorter but it has a time complexity of O(n ^ d)
-// where d is the level of dept of the nested loops, that algorith would be an expensive one
+// where d is the level of dept of the nested loops, that algorithm would be an expensive one
 // but by using frequency counters we have a more efficient time complexity of O(n)
 
 
@@ -52,21 +55,17 @@ const isSquareOf = (firstArray, secondArray) => {
 const validAnagram = (firstString, secondString) => {
   if(firstString.length !== secondString.length) return false;
 
-  let stringFrequency1 = {};
-  let stringFrequency2 = {};
+  let stringFrequency = {};
 
   for(let str of firstString) {
-    stringFrequency1[str] = stringFrequency1[str]++ || 1;
+    stringFrequency[str] = ++stringFrequency[str] || 1;
   };
 
   for(let str of secondString) {
-    stringFrequency2[str] = stringFrequency2[str]++ || 1;
-  };
-
-  for(let key in stringFrequency1) {
-    if(!(stringFrequency2[key])) return false;
-    
-    if(!(stringFrequency1[key] == stringFrequency2[key])) return false;
+    if(!(stringFrequency[str])) return false;
+    else {
+      --stringFrequency[str];
+    };
   };
 
   return true;
