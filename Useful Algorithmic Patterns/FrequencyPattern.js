@@ -38,9 +38,6 @@ const isSquareOf = (firstArray, secondArray) => {
   return true
 };
 
-console.log(isSquareOf([1,2,3,4,5], [4,9,16,25,1]),
-isSquareOf([1,2,3,4,5], [4,9,16,20,1]));
-
 // this function is very efficient in time complexity 
 // although there is a shorter way of writing this
 // but the emphasis here is on time complexity, 
