@@ -17,4 +17,6 @@ const selectionSort = (arr) => {
   return arr
 }
 
+// selection sort is prefered over bubble sort when we dont want a lot of swaps
+// but generally, bubble sort is better
 // the time complexity of selection sort is O(n^2)
