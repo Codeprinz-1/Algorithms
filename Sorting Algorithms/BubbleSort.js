@@ -17,4 +17,4 @@ const bubbleSort = (arr) => {
   return arr;
 }
 
-// the time complexity of this algorithm is O(n^2)
+// the time complexity of this algorithm is O(n^2) but performs very well when the data set is almost sorted

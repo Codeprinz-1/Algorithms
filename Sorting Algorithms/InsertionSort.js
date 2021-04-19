@@ -23,4 +23,5 @@ const insertionSort = (arr) => {
     return arr;
 }
 
-// the time complexity of insertion sort is O(n^2)
+// the time complexity of insertion sort is O(n^2) but insertion sort performs best when the data set is almost sorted
+// insertion sort also works when we want to continue sorting the data set continiously like if we continually add element to the array
